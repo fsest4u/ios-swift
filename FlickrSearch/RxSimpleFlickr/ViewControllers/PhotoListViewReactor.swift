@@ -14,14 +14,18 @@ class PhotoListViewReactor: Reactor {
   
   enum Action {
     case searchFlickr(String)
+    case getBookList(String)
   }
   
   enum Mutation {
     case flickrList([Photos])
+    case bookList([Books])
   }
   
   struct State{
     var photos: [Photos]?
+    var books: [Books]?
+
   }
   
   var initialState: State = State()
@@ -35,6 +39,11 @@ class PhotoListViewReactor: Reactor {
               .catchErrorJustReturn([])
               .map{[Photos(photos: $0)]}
               .map {Mutation.flickrList($0)}
+    case let .getBookList(keyword):
+        return JoaraService.request()
+            .catchErrorJustReturn([])
+            .map{[Books(books: $0)]}
+            .map{Mutation.bookList($0)}
     }
   }
   
@@ -43,6 +52,8 @@ class PhotoListViewReactor: Reactor {
     switch mutation {
     case let .flickrList(photos):
       newState.photos = photos
+    case let .bookList(books):
+        newState.books = books
     }
     
     return newState

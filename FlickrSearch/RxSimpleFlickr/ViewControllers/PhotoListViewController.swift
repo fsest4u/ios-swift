@@ -42,12 +42,12 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
   
   // MARK: Properties
   
-  let dataSources = RxCollectionViewSectionedReloadDataSource<Photos>(configureCell: { dataSource,
+  let dataSources = RxCollectionViewSectionedReloadDataSource<Books>(configureCell: { dataSource,
                                                                                     collectionView,
                                                                                     indexPath,
                                                                                     item in
     let cell = collectionView.dequeue(Reusable.flickrCell, for: indexPath)
-    if let imageURL = item.flickrURL(), let url = URL(string: imageURL) {
+    if let imageURL = item.bookImage(), let url = URL(string: imageURL) {
         cell.flickrPhoto.kf.setImage(with: url)
     }
     
@@ -127,12 +127,12 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
       .orEmpty
       .debounce(1.0, scheduler: MainScheduler.instance)
       .filter { !$0.isEmpty }
-      .map(Reactor.Action.searchFlickr)
+      .map(Reactor.Action.getBookList)
       .bind(to: reactor.action)
       .disposed(by: disposeBag)
     
     // State
-    reactor.state.asObservable().map { $0.photos }
+    reactor.state.asObservable().map { $0.books }
       .replaceNilWith([])
       .bind(to: collectionView.rx.items(dataSource: dataSources))
       .disposed(by: disposeBag)
