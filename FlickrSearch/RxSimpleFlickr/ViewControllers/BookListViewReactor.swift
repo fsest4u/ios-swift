@@ -13,17 +13,15 @@ import RxSwift
 class BookListViewReactor: Reactor {
   
   enum Action {
-    case getBookList
+    case getFirstBookList
   }
   
   enum Mutation {
-    case bookList([Books])
+    case initBookList([Books])
   }
   
   struct State{
-    //var photos: [Photos]?
     var books: [Books]?
-
   }
   
   var initialState: State = State()
@@ -32,18 +30,18 @@ class BookListViewReactor: Reactor {
   
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
-    case .getBookList:
-        return JoaraService.request()
+    case .getFirstBookList:
+        return JoaraService.request(page: 1)
             .catchErrorJustReturn([])
             .map{[Books(books: $0)]}
-            .map{Mutation.bookList($0)}
+            .map{Mutation.initBookList($0)}
     }
   }
   
   func reduce(state: State, mutation: Mutation) -> State {
     var newState = state
     switch mutation {
-    case let .bookList(books):
+    case let .initBookList(books):
         newState.books = books
     }
     

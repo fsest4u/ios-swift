@@ -62,7 +62,11 @@ class BookListViewController: UIViewController, ReactorKit.View {
   }
   
   // MARK: Initializing
-  
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.reactor = BookListViewReactor()
+    }
+    
   init(reactor: BookListViewReactor) {
     super.init(nibName: nil, bundle: nil)
     self.reactor = reactor
@@ -113,7 +117,7 @@ class BookListViewController: UIViewController, ReactorKit.View {
       .disposed(by: disposeBag)
     
     // Action
-    Observable.from(optional: Reactor.Action.getBookList)
+    Observable.from(optional: Reactor.Action.getFirstBookList)
         .bind(to: reactor.action)
         .disposed(by: disposeBag)
     

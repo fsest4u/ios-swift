@@ -20,17 +20,17 @@ class JoaraService {
         "device": "flickr.photos.search",
         "deviceuid": "json",
         "devicetoken": "100",
-        "page": "1"
+        //"page": "1"
     ]
     
     static let headers = [
         "Content-Type": "application/json"
     ]
     
-    static func request() -> Observable<[Book]> {
+    static func request(page: Int) -> Observable<([Book])> {
         return Observable.create { observer -> Disposable in
-            let params = parameters
-            //params["text"] = keyword
+            var params = parameters
+            params["page"] = String(page)
             
             Alamofire.request(baseURL, parameters: params, headers: headers).responseJSON { response in
                 
