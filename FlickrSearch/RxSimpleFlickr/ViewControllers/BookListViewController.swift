@@ -53,12 +53,6 @@ class BookListViewController: UIViewController, ReactorKit.View {
     
     return cell
   })
-
-  let searchBar = UISearchBar(frame: .zero).then {
-    $0.searchBarStyle = .prominent
-    $0.placeholder = "Search Joara Novel"
-    $0.sizeToFit()
-  }
   
   let collectionView = UICollectionView(frame: .zero,
                                         collectionViewLayout: UICollectionViewFlowLayout()).then {
@@ -83,7 +77,7 @@ class BookListViewController: UIViewController, ReactorKit.View {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.title = "Search Joara Novel"
-    self.view.addSubview(self.searchBar)
+    //self.view.addSubview(self.searchBar)
     self.view.addSubview(self.collectionView)
     
     setupConstraints()
@@ -97,13 +91,9 @@ class BookListViewController: UIViewController, ReactorKit.View {
   
   
   func setupConstraints() {
-    self.searchBar.snp.makeConstraints { make in
-      make.top.equalTo(self.view.safeArea.top)
-      make.left.right.equalTo(self.view)
-    }
     
     self.collectionView.snp.makeConstraints { make in
-      make.top.equalTo(self.searchBar.snp.bottom)
+      make.top.equalTo(self.view)
       make.left.right.bottom.equalTo(self.view)
     }
 
@@ -123,13 +113,9 @@ class BookListViewController: UIViewController, ReactorKit.View {
       .disposed(by: disposeBag)
     
     // Action
-    self.searchBar.rx.text
-      .orEmpty
-      .debounce(1.0, scheduler: MainScheduler.instance)
-      .filter { !$0.isEmpty }
-      .map(Reactor.Action.getBookList)
-      .bind(to: reactor.action)
-      .disposed(by: disposeBag)
+    Observable.from(optional: Reactor.Action.getBookList)
+        .bind(to: reactor.action)
+        .disposed(by: disposeBag)
     
     // State
     reactor.state.asObservable().map { $0.books }

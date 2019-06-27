@@ -13,7 +13,7 @@ import RxSwift
 class BookListViewReactor: Reactor {
   
   enum Action {
-    case getBookList(String)
+    case getBookList
   }
   
   enum Mutation {
@@ -32,7 +32,7 @@ class BookListViewReactor: Reactor {
   
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
-    case let .getBookList(keyword):
+    case .getBookList:
         return JoaraService.request()
             .catchErrorJustReturn([])
             .map{[Books(books: $0)]}
