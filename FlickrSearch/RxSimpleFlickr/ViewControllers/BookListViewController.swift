@@ -18,12 +18,12 @@ import RxSwift
 import SnapKit
 import Then
 
-class PhotoListViewController: UIViewController, ReactorKit.View {
+class BookListViewController: UIViewController, ReactorKit.View {
   
   // MARK : Constants
   
   struct Reusable {
-    static let flickrCell = ReusableCell<PhotoCell>()
+    static let flickrCell = ReusableCell<BookCell>()
   }
   
   struct Constant {
@@ -48,7 +48,7 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
                                                                                     item in
     let cell = collectionView.dequeue(Reusable.flickrCell, for: indexPath)
     if let imageURL = item.bookImage(), let url = URL(string: imageURL) {
-        cell.flickrPhoto.kf.setImage(with: url)
+        cell.bookImage.kf.setImage(with: url)
     }
     
     return cell
@@ -56,7 +56,7 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
 
   let searchBar = UISearchBar(frame: .zero).then {
     $0.searchBarStyle = .prominent
-    $0.placeholder = "Search Flickr"
+    $0.placeholder = "Search Joara Novel"
     $0.sizeToFit()
   }
   
@@ -69,7 +69,7 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
   
   // MARK: Initializing
   
-  init(reactor: PhotoListViewReactor) {
+  init(reactor: BookListViewReactor) {
     super.init(nibName: nil, bundle: nil)
     self.reactor = reactor
   }
@@ -82,7 +82,7 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationItem.title = "Search RxFlickr"
+    self.navigationItem.title = "Search Joara Novel"
     self.view.addSubview(self.searchBar)
     self.view.addSubview(self.collectionView)
     
@@ -111,13 +111,13 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
   
   // MARK: Binding
   
-  func bind(reactor: PhotoListViewReactor) {
+  func bind(reactor: BookListViewReactor) {
     // DataSource
     self.collectionView.rx.setDelegate(self).disposed(by: disposeBag)
     
-    self.collectionView.rx.modelSelected(Photo.self).subscribe(onNext: { photo in
+    self.collectionView.rx.modelSelected(Book.self).subscribe(onNext: { book in
       let view = DetailViewController()
-      view.photo = photo
+      view.book = book
       self.navigationController?.pushViewController(view, animated: true)
     })
       .disposed(by: disposeBag)
@@ -141,7 +141,7 @@ class PhotoListViewController: UIViewController, ReactorKit.View {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
-extension PhotoListViewController: UICollectionViewDelegateFlowLayout {
+extension BookListViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView,
                       layout collectionViewLayout: UICollectionViewLayout,

@@ -1,5 +1,5 @@
 //
-//  PhotoListViewReactor.swift
+//  BookListViewReactor.swift
 //  RxSimpleFlickr
 //
 //  Created by Tae joong Yoon on 24/09/2018.
@@ -10,20 +10,18 @@ import ReactorKit
 import RxCocoa
 import RxSwift
 
-class PhotoListViewReactor: Reactor {
+class BookListViewReactor: Reactor {
   
   enum Action {
-    case searchFlickr(String)
     case getBookList(String)
   }
   
   enum Mutation {
-    case flickrList([Photos])
     case bookList([Books])
   }
   
   struct State{
-    var photos: [Photos]?
+    //var photos: [Photos]?
     var books: [Books]?
 
   }
@@ -34,11 +32,6 @@ class PhotoListViewReactor: Reactor {
   
   func mutate(action: Action) -> Observable<Mutation> {
     switch action {
-    case let .searchFlickr(keyword):
-      return AppService.request(keyword: keyword)
-              .catchErrorJustReturn([])
-              .map{[Photos(photos: $0)]}
-              .map {Mutation.flickrList($0)}
     case let .getBookList(keyword):
         return JoaraService.request()
             .catchErrorJustReturn([])
@@ -50,8 +43,6 @@ class PhotoListViewReactor: Reactor {
   func reduce(state: State, mutation: Mutation) -> State {
     var newState = state
     switch mutation {
-    case let .flickrList(photos):
-      newState.photos = photos
     case let .bookList(books):
         newState.books = books
     }

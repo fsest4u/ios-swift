@@ -21,8 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window = UIWindow(frame: UIScreen.main.bounds)
     window?.makeKeyAndVisible()
     
-    let reactor = PhotoListViewReactor()
-    let viewController = PhotoListViewController(reactor: reactor)
+    let reactor = BookListViewReactor()
+    let viewController = BookListViewController(reactor: reactor)
     
     let navigation = UINavigationController(rootViewController: viewController)
     window?.rootViewController = navigation

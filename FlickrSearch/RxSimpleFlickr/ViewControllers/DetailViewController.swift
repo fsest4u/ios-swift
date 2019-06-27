@@ -15,7 +15,7 @@ import Then
 class DetailViewController: UIViewController {
 
   // MARK: Properties
-  var photo = Photo()
+  var book = Book()
   
   let imageView = UIImageView(frame: .zero).then {
     $0.translatesAutoresizingMaskIntoConstraints = false
@@ -27,7 +27,7 @@ class DetailViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+    print("DetailViewControlloer viewDidLoad...")
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save",
                                                              style: .done,
                                                              target: self,
@@ -39,11 +39,14 @@ class DetailViewController: UIViewController {
     setupConstraints()
     
     
-    if let imageURL = photo?.flickrURL(), let url = URL(string: imageURL) {
+//    if let imageURL = photo?.flickrURL(), let url = URL(string: imageURL) {
+//        self.imageView.kf.setImage(with: url)
+//    }
+    if let imageURL = book?.bookImage(), let url = URL(string: imageURL) {
         self.imageView.kf.setImage(with: url)
     }
     
-    self.titleLabel.text = photo?.title
+    self.titleLabel.text = book?.subject
   }
   
   override func didReceiveMemoryWarning() {

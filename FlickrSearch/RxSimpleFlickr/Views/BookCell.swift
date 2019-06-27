@@ -11,11 +11,11 @@ import UIKit
 import SnapKit
 import Then
 
-class PhotoCell: UICollectionViewCell {
+class BookCell: UICollectionViewCell {
   
   // MARK: Properties
   
-  let flickrPhoto = UIImageView(frame: .zero).then {
+  let bookImage = UIImageView(frame: .zero).then {
     $0.translatesAutoresizingMaskIntoConstraints = false
   }
   
@@ -24,7 +24,7 @@ class PhotoCell: UICollectionViewCell {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    self.contentView.addSubview(self.flickrPhoto)
+    self.contentView.addSubview(self.bookImage)
     setupConstraints()
   }
   
@@ -43,13 +43,13 @@ class PhotoCell: UICollectionViewCell {
   override func prepareForReuse() {
     super.prepareForReuse()
     
-    self.flickrPhoto.image = nil
+    self.bookImage.image = nil
   }
   
   // MARK: Constraints
   
   func setupConstraints() {
-    self.flickrPhoto.snp.makeConstraints { make in
+    self.bookImage.snp.makeConstraints { make in
       make.edges.equalTo(self.contentView)
     }
   }

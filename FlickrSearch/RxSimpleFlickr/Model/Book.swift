@@ -82,9 +82,10 @@ struct Book : Mappable {
     var icon_url : [String]?
     var new_icon_url : [String]?
     
-    init?(map: Map) {
-        
-    }
+    
+    init?() { }
+    
+    init?(map: Map) { }
     
     mutating func mapping(map: Map) {
         
