@@ -24,6 +24,8 @@ class GitHubSearchViewController: UIViewController, StoryboardView {
     tableView.scrollIndicatorInsets.top = tableView.contentInset.top
     searchController.dimsBackgroundDuringPresentation = false
     navigationItem.searchController = searchController
+    
+    self.reactor = GitHubSearchViewReactor()
   }
 
   override func viewDidAppear(_ animated: Bool) {

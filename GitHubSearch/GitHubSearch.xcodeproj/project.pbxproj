@@ -63,15 +63,23 @@
 		030AD45E1EC5BC3300360E05 /* GitHubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				1750C86F22C5E18400AD764B /* ViewControllers */,
 				030AD45F1EC5BC3300360E05 /* AppDelegate.swift */,
-				030AD4611EC5BC3300360E05 /* GitHubSearchViewController.swift */,
-				031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */,
 				030AD4631EC5BC3300360E05 /* Main.storyboard */,
 				030AD4661EC5BC3300360E05 /* Assets.xcassets */,
 				030AD4681EC5BC3300360E05 /* LaunchScreen.storyboard */,
 				030AD46B1EC5BC3300360E05 /* Info.plist */,
 			);
 			path = GitHubSearch;
+			sourceTree = "<group>";
+		};
+		1750C86F22C5E18400AD764B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				030AD4611EC5BC3300360E05 /* GitHubSearchViewController.swift */,
+				031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		41C294EC4A44074ED578CD1C /* Frameworks */ = {

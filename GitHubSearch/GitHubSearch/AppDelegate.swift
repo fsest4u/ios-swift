@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let navigationController = self.window?.rootViewController as! UINavigationController
     navigationController.navigationBar.prefersLargeTitles = true
     let viewController = navigationController.viewControllers.first as! GitHubSearchViewController
-    viewController.reactor = GitHubSearchViewReactor()
+    //viewController.reactor = GitHubSearchViewReactor()
     return true
   }
 }
