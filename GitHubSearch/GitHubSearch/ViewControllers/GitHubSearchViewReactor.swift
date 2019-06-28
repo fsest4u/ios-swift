@@ -40,7 +40,7 @@ final class GitHubSearchViewReactor: Reactor {
         Observable.just(Mutation.setQuery(query)),
 
         // 2) call API and set repos (.setRepos)
-        self.search(query: query, page: 1)
+        self.search(page: 1)
           // cancel previous request when the new `.updateQuery` action is fired
           .takeUntil(self.action.filter(Action.isUpdateQueryAction))
           .map { Mutation.setRepos($0, nextPage: $1) },
@@ -54,7 +54,7 @@ final class GitHubSearchViewReactor: Reactor {
         Observable.just(Mutation.setLoadingNextPage(true)),
 
         // 2) call API and append repos
-        self.search(query: self.currentState.query, page: page)
+        self.search(page: page)
           .takeUntil(self.action.filter(Action.isUpdateQueryAction))
           .map { Mutation.appendRepos($0, nextPage: $1) },
 
@@ -90,19 +90,19 @@ final class GitHubSearchViewReactor: Reactor {
     }
   }
 
-  private func url(for query: String?, page: Int) -> URL? {
-    guard let query = query, !query.isEmpty else { return nil }
-    return URL(string: "https://api.github.com/search/repositories?q=\(query)&page=\(page)")
+  private func url(page: Int) -> URL? {
+    return URL(string: "https://api-dev3.joara.com/v1/book/list.json?api_key=ios_02d89057a1f2c1b4a3391b937c46&device=ios&deviceuid=ios&devicetoken=ios&page=\(page)")
   }
 
-  private func search(query: String?, page: Int) -> Observable<(repos: [String], nextPage: Int?)> {
+  private func search(page: Int) -> Observable<(repos: [String], nextPage: Int?)> {
     let emptyResult: ([String], Int?) = ([], nil)
-    guard let url = self.url(for: query, page: page) else { return .just(emptyResult) }
+    guard let url = self.url(page: page) else { return .just(emptyResult) }
     return URLSession.shared.rx.json(url: url)
       .map { json -> ([String], Int?) in
+        print(json)
         guard let dict = json as? [String: Any] else { return emptyResult }
-        guard let items = dict["items"] as? [[String: Any]] else { return emptyResult }
-        let repos = items.compactMap { $0["full_name"] as? String }
+        guard let items = dict["books"] as? [[String: Any]] else { return emptyResult }
+        let repos = items.compactMap { $0["subject"] as? String }
         let nextPage = repos.isEmpty ? nil : page + 1
         return (repos, nextPage)
       }

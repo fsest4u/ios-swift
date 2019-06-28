@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zXt-zM-P62">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="zXt-zM-P62">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -24,7 +25,7 @@
             </objects>
             <point key="canvasLocation" x="784" y="84"/>
         </scene>
-        <!--GitHub Search-->
+        <!--Book List-->
         <scene sceneID="TyZ-Sc-0bE">
             <objects>
                 <viewController id="FjO-M9-a1h" customClass="GitHubSearchViewController" customModule="GitHubSearch" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,7 +69,7 @@
                             <constraint firstAttribute="trailing" secondItem="rUh-ed-vJc" secondAttribute="trailing" id="aYK-Ak-j0V"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="GitHub Search" id="5QA-m0-LcP"/>
+                    <navigationItem key="navigationItem" title="Book List" id="5QA-m0-LcP"/>
                     <connections>
                         <outlet property="tableView" destination="rUh-ed-vJc" id="huZ-zk-USQ"/>
                     </connections>
