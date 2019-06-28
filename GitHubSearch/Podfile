@@ -4,6 +4,21 @@ target 'GitHubSearch' do
   use_frameworks!
 
   pod 'ReactorKit'
+  # Rx
   pod 'RxSwift', '~> 5.0'
   pod 'RxCocoa', '~> 5.0'
+
+  # Network
+  pod 'Alamofire', '~> 4.7'
+  pod 'Kingfisher', '~> 4.0'
+
+  # Parsing
+  pod 'SwiftyJSON', '~> 4.0'
+  pod 'ObjectMapper', '~> 3.2' 
+ 
+  # Misc.
+  pod 'ReusableKit'
+  pod 'Then'
+
+  
 end
