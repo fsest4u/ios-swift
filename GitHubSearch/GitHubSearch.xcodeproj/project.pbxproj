@@ -13,6 +13,7 @@
 		030AD4671EC5BC3300360E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030AD4661EC5BC3300360E05 /* Assets.xcassets */; };
 		030AD46A1EC5BC3300360E05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030AD4681EC5BC3300360E05 /* LaunchScreen.storyboard */; };
 		031F764A1EC63D1500E9BAEA /* GitHubSearchViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */; };
+		1750C87222C5E88700AD764B /* JoaraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750C87122C5E88700AD764B /* JoaraAPI.swift */; };
 		BF2957DC27BFA25608DD6F45 /* Pods_GitHubSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB65A58E5A70F558E5C6504 /* Pods_GitHubSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		030AD4691EC5BC3300360E05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		030AD46B1EC5BC3300360E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubSearchViewReactor.swift; sourceTree = "<group>"; };
+		1750C87122C5E88700AD764B /* JoaraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoaraAPI.swift; sourceTree = "<group>"; };
 		ACFE9BCC65C0EC5E5B97F409 /* Pods-GitHubSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		DE442A63CC3E25FAC6BB33AE /* Pods-GitHubSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch.release.xcconfig"; sourceTree = "<group>"; };
 		FCB65A58E5A70F558E5C6504 /* Pods_GitHubSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -63,6 +65,7 @@
 		030AD45E1EC5BC3300360E05 /* GitHubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				1750C87022C5E87000AD764B /* Service */,
 				1750C86F22C5E18400AD764B /* ViewControllers */,
 				030AD45F1EC5BC3300360E05 /* AppDelegate.swift */,
 				030AD4631EC5BC3300360E05 /* Main.storyboard */,
@@ -80,6 +83,14 @@
 				031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		1750C87022C5E87000AD764B /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				1750C87122C5E88700AD764B /* JoaraAPI.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		41C294EC4A44074ED578CD1C /* Frameworks */ = {
@@ -195,17 +206,29 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ReactorKit/ReactorKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ReusableKit/ReusableKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/Then/Then.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReactorKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReusableKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Then.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -219,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1750C87222C5E88700AD764B /* JoaraAPI.swift in Sources */,
 				030AD4621EC5BC3300360E05 /* GitHubSearchViewController.swift in Sources */,
 				030AD4601EC5BC3300360E05 /* AppDelegate.swift in Sources */,
 				031F764A1EC63D1500E9BAEA /* GitHubSearchViewReactor.swift in Sources */,
