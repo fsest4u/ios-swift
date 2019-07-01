@@ -50,7 +50,7 @@ class GitHubSearchViewController: UIViewController, StoryboardView {
     // State
     reactor.state.map { $0.repos }
       .bind(to: tableView.rx.items(cellIdentifier: "cell")) { indexPath, repo, cell in
-        cell.textLabel?.text = repo
+        cell.textLabel?.text = repo.subject
       }
       .disposed(by: disposeBag)
 

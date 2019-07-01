@@ -13,7 +13,9 @@
 		030AD4671EC5BC3300360E05 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030AD4661EC5BC3300360E05 /* Assets.xcassets */; };
 		030AD46A1EC5BC3300360E05 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 030AD4681EC5BC3300360E05 /* LaunchScreen.storyboard */; };
 		031F764A1EC63D1500E9BAEA /* GitHubSearchViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */; };
+		173A6B1E22C9A36E006303A9 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 173A6B1D22C9A36E006303A9 /* Book.swift */; };
 		1750C87222C5E88700AD764B /* JoaraAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750C87122C5E88700AD764B /* JoaraAPI.swift */; };
+		1750C87522C5FDF400AD764B /* BookCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1750C87422C5FDF400AD764B /* BookCodable.swift */; };
 		BF2957DC27BFA25608DD6F45 /* Pods_GitHubSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCB65A58E5A70F558E5C6504 /* Pods_GitHubSearch.framework */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +28,9 @@
 		030AD4691EC5BC3300360E05 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		030AD46B1EC5BC3300360E05 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		031F76491EC63D1500E9BAEA /* GitHubSearchViewReactor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubSearchViewReactor.swift; sourceTree = "<group>"; };
+		173A6B1D22C9A36E006303A9 /* Book.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		1750C87122C5E88700AD764B /* JoaraAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoaraAPI.swift; sourceTree = "<group>"; };
+		1750C87422C5FDF400AD764B /* BookCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookCodable.swift; sourceTree = "<group>"; };
 		ACFE9BCC65C0EC5E5B97F409 /* Pods-GitHubSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		DE442A63CC3E25FAC6BB33AE /* Pods-GitHubSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GitHubSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-GitHubSearch/Pods-GitHubSearch.release.xcconfig"; sourceTree = "<group>"; };
 		FCB65A58E5A70F558E5C6504 /* Pods_GitHubSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GitHubSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +69,7 @@
 		030AD45E1EC5BC3300360E05 /* GitHubSearch */ = {
 			isa = PBXGroup;
 			children = (
+				1750C87322C5FDDB00AD764B /* Model */,
 				1750C87022C5E87000AD764B /* Service */,
 				1750C86F22C5E18400AD764B /* ViewControllers */,
 				030AD45F1EC5BC3300360E05 /* AppDelegate.swift */,
@@ -91,6 +96,15 @@
 				1750C87122C5E88700AD764B /* JoaraAPI.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		1750C87322C5FDDB00AD764B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				173A6B1D22C9A36E006303A9 /* Book.swift */,
+				1750C87422C5FDF400AD764B /* BookCodable.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		41C294EC4A44074ED578CD1C /* Frameworks */ = {
@@ -245,6 +259,8 @@
 				1750C87222C5E88700AD764B /* JoaraAPI.swift in Sources */,
 				030AD4621EC5BC3300360E05 /* GitHubSearchViewController.swift in Sources */,
 				030AD4601EC5BC3300360E05 /* AppDelegate.swift in Sources */,
+				173A6B1E22C9A36E006303A9 /* Book.swift in Sources */,
+				1750C87522C5FDF400AD764B /* BookCodable.swift in Sources */,
 				031F764A1EC63D1500E9BAEA /* GitHubSearchViewReactor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

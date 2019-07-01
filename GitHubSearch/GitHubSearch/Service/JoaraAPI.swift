@@ -25,27 +25,26 @@ class JoaraAPI {
         "Content-Type": "application/json"
     ]
 
-    static func request(page: Int) -> Observable<(repos: [String], nextPage: Int?)> {
+    static func request(page: Int) -> Observable<(repos: [Book], nextPage: Int?)> {
+    
         return Observable.create { observer -> Disposable in
             var params = parameters
             params["page"] = String(page)
             
             Alamofire.request(baseURL, parameters: params, headers: headers).responseJSON { response in
-                
+
                 switch response.result {
                 case .success(let value):
 
-                    //print("test : \(value)")
-                    let dict = value as? [String: Any]
-                    let items = dict?["books"] as? [[String: Any]]
-                    
-                    if let repos = (items?.compactMap{ $0["subject"] as? String }),
-                        let nextPage = repos.isEmpty ? nil : page + 1 {
-                        observer.onNext((repos, nextPage))
+                    if let result = JSON(value)["books"].rawString(),
+                        let books = Mapper<Book>().mapArray(JSONString: result) {
+                        let nextPage = books.isEmpty ? nil : page + 1
+                        observer.onNext((books, nextPage))
+
                     }
                     print("request complete")
                     observer.onCompleted()
-                    
+
                 case .failure(let error):
                     observer.onError(error)
                 }
@@ -53,5 +52,14 @@ class JoaraAPI {
             
             return Disposables.create()
         }
+    }
+}
+
+extension Request {
+    public func debugLog() -> Self {
+        #if DEBUG
+        debugPrint(self)
+        #endif
+        return self
     }
 }

@@ -17,13 +17,13 @@ final class GitHubSearchViewReactor: Reactor {
   }
 
   enum Mutation {
-    case setRepos([String], nextPage: Int?)
-    case appendRepos([String], nextPage: Int?)
+    case setRepos([Book], nextPage: Int?)
+    case appendRepos([Book], nextPage: Int?)
     case setLoadingNextPage(Bool)
   }
 
   struct State {
-    var repos: [String] = []
+    var repos: [Book] = []
     var nextPage: Int?
     var isLoadingNextPage: Bool = false
 
